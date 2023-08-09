@@ -1,0 +1,20 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+#sketch-pad{
+    border: 10px solid rgb(97, 97, 97);
+    width: fit-content;
+}
+
+.sketch-row{
+    display: flex;
+}
+
+.sketch-block{
+    background-color: white;
+    border:1px solid black;
+    height: 20px;
+    width: 20px;
+}

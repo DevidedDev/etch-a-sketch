@@ -18,12 +18,16 @@ const toolBtn = document.querySelectorAll("[data-tool")
 
 const sketchPad = document.getElementById("sketch-pad");
 
+const resolutiionPicker = document.getElementById("resolution-picker");
+
 toolBtn.forEach( (button) => {
     button.addEventListener("click", changeToolSelection);
     
 });
 
 clrPicker.addEventListener("change", changeColor);
+
+resolutiionPicker.addEventListener("change", createGrid);
 
 function displaySelectedTool(selectedTool){
     toolBtn.forEach( (button)=>{
@@ -50,6 +54,7 @@ function changeToolSelection(){
     switch(selectedTool){
         case "solid-color":
             changeColor();
+            selectedColor = "brush"
             break;
 
         case "shadow":
@@ -68,7 +73,15 @@ function changeToolSelection(){
 
 
 
-function createGrid(size){
+function createGrid(){
+
+    while(sketchPad.firstChild){
+        sketchPad.removeChild(sketchPad.firstChild);
+    }
+    size = resolutiionPicker.value;
+    
+
+    console.log("ello")
     for(let i = 0; i < size; i++){
         const sketchRow = document.createElement("div");
         sketchRow.classList.add("sketch-row");
@@ -83,7 +96,6 @@ function createGrid(size){
     }
 }
 
-createGrid(16);
 
 function generateRandNum(start, end){
     
@@ -125,3 +137,5 @@ function changeBgClr(){
     this.style.backgroundColor = selectedColor;
 
 }
+
+createGrid(16);

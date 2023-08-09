@@ -11,13 +11,14 @@
                 <h2>Tools</h2>
                 <div class="color-picker-container">
                     <p>Color Picker:</p>
-                    <input type="color" id="color-picker" value="black">
+                    <input type="color" id="color-picker" value="#000000" >
                 </div>
 
                 <ul class="tools">
-                    <li>Shadow: <button class="btn-selected"></button></li>
-                    <li>Rainbow: <button></button></li>
-                    <li>Erasor: <button></button></li>
+                    <li>Brush: <button data-tool="solid-color" class="btn-selected"></button></li>
+                    <li>Shadow: <button data-tool="shadow" ></button></li>
+                    <li>Rainbow: <button data-tool="rainbow" ></button></li>
+                    <li>Erasor: <button data-tool="erasor" ></button></li>
                 </ul>
             </div>
             <div id="sketch-pad"></div>

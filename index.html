@@ -6,44 +6,47 @@
         <meta charset="utf-8">
     </head>
     <body>
-        <div class="sketch-ui">
-            <div class="settings-container ">
-                <h2>Tools</h2>
-                <div class="color-picker-container">
-                    <p>Color Picker:</p>
-                    <input type="color" id="color-picker" value="#000000" >
-                </div>
-
-                <ul class="tools">
-                    <li>Brush: <button data-tool="solid-color" class="btn-selected"></button></li>
-                    <li>Shadow: <button data-tool="shadow" ></button></li>
-                    <li>Rainbow: <button data-tool="rainbow" ></button></li>
-                    <li>Erasor: <button data-tool="erasor" ></button></li>
-                </ul>
-            </div>
-            <div id="sketch-pad"></div>
-            <div class="settings-container">
-                <h2>Choose size</h2>
-                <div class="slider-container">
-                    <input
-                        type="range"
-                        min ="16"
-                        max="64"
-                        value= "16"
-                        step="16"
-                        class="slider"
-                    >
-                    <ul class="slider-ticks">
-                        <li>64</li>
-                        <li>48</li>
-                        <li>32</li>
-                        <li>16</li>
-                    </ul>
-                </div>
+            <h1 class="title">Etch a sketch</h1>
+            <div class="sketch-ui-container">
+                <div class="sketch-ui">
+                    <div class="settings-container ">
+                        <h2>Tools</h2>
+                        <div class="color-picker-container">
+                            <p>Color Picker:</p>
+                            <input type="color" id="color-picker" value="#000000" >
+                        </div>
+                        <ul class="tools">
+                            <li>Brush: <button data-tool="solid-color" class="btn-selected"></button></li>
+                            <li>Shadow: <button data-tool="shadow" ></button></li>
+                            <li>Rainbow: <button data-tool="rainbow" ></button></li>
+                            <li>Erasor: <button data-tool="erasor" ></button></li>
+                        </ul>
+                    </div>
+                    <div id="sketch-pad"></div>
+                    <div class="settings-container">
+                        <h2>Choose size</h2>
+                        <div class="slider-container">
+                            <input
+                                type="range"
+                                min ="8"
+                                max="32"
+                                value= "8"
+                                step="8"
+                                class="slider"
+                                id="resolution-picker"
+                            >
+                            <ul class="slider-ticks">
+                                <li>32</li>
+                                <li>24</li>
+                                <li>16</li>
+                                <li>8</li>
+                            </ul>
+                        </div>
                 
+                    </div>
             </div>
-
-        </div>
+            </div>
+            <p class="credit">Made by @DevidedDev</p>
         <script src="script.js"></script>
     </body>
     

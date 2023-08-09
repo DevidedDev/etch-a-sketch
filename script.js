@@ -41,7 +41,9 @@ function displaySelectedTool(selectedTool){
 
 function changeColor(){
     if(toolBtn.item(0).getAttribute("class") ===  "btn-selected"){
-        selectedColor = clrPicker.value;
+       
+         selectedColor = clrPicker.value;
+        
         
     }
 }
@@ -54,7 +56,7 @@ function changeToolSelection(){
     switch(selectedTool){
         case "solid-color":
             changeColor();
-            selectedColor = "brush"
+            selectedOption = "brush"
             break;
 
         case "shadow":
@@ -130,8 +132,10 @@ function changeBgClr(){
             selectedColor = getRainbowClr();
             console.log(selectedColor);
             break;
-        case "erasor":
+        
         case "brush":
+            changeColor();
+            
             break;
     }
     this.style.backgroundColor = selectedColor;

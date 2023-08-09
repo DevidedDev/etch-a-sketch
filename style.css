@@ -117,7 +117,11 @@ body{
     -webkit-appearance: slider-vertical;
     height: 100%;
     margin-left: 36px;
+    
 }
+
+
+
 
 .slider-ticks{  
     z-index: 2;

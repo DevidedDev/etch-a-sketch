@@ -2,19 +2,74 @@
     margin: 0;
     padding: 0;
 }
+html,body{
+    height: 100%;
+}
+body{
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.sketch-ui{
+    display: flex;
+    flex: 0 1 800px;
+    height: fit-content;
+
+}
+
+.settings-container{
+    border: 10px solid gray;
+    flex: 1 0 100px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+}
 
 #sketch-pad{
     border: 10px solid rgb(97, 97, 97);
-    width: fit-content;
+    height: 400px;
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    flex: none;
 }
+
 
 .sketch-row{
     display: flex;
+    flex: 1;
 }
 
 .sketch-block{
     background-color: white;
     border:1px solid black;
-    height: 20px;
-    width: 20px;
+    flex: 1;
+}
+
+
+.slider-container{
+    display: flex;
+    margin-top: 20px;
+    justify-content: center;
+    height: 300px;
+}
+
+.slider{
+    width: 10px;
+    appearance: slider-vertical;
+    /* safari */
+    -webkit-appearance: slider-vertical;
+    height: 100%;
+    margin-left: 36px;
+}
+
+.slider-ticks{  
+    z-index: 2;
+    list-style-type: "-  "; 
+    margin-left: 20px; 
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }

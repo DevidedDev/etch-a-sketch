@@ -2,7 +2,7 @@
     //use 2 loops 
         //one for creation of row
         //add class to each row
-            //seconf for creation of blocks
+            //second for creation of blocks
             //add class to each block
             //append block to row
         //append row to 
@@ -11,6 +11,7 @@
     //event listener => if clicked, change color
 
 const sketchPad = document.getElementById("sketch-pad");
+let selectedColor = "red";
 
 function createGrid(size){
 
@@ -20,6 +21,8 @@ function createGrid(size){
         for(let j = 0; j < size; j++){
             const sketchBlock = document.createElement("div");
             sketchBlock.classList.add("sketch-block");
+            sketchBlock.addEventListener("mouseover", changeBgClr)
+
             sketchRow.appendChild(sketchBlock);
         }
         sketchPad.appendChild(sketchRow);
@@ -27,3 +30,7 @@ function createGrid(size){
 }
 
 createGrid(16);
+
+function changeBgClr(){
+    this.style.backgroundColor = selectedColor;
+}

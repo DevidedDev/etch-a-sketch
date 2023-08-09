@@ -6,7 +6,31 @@
         <meta charset="utf-8">
     </head>
     <body>
-        <div id="sketch-pad"></div>
+        <div class="sketch-ui">
+            <div class="settings-container "></div>
+            <div id="sketch-pad"></div>
+            <div class="settings-container">
+                <h2>Choose size</h2>
+                <div class="slider-container">
+                    <input
+                        type="range"
+                        min ="16"
+                        max="64"
+                        value= "16"
+                        step="16"
+                        class="slider"
+                    >
+                    <ul class="slider-ticks">
+                        <li>64</li>
+                        <li>48</li>
+                        <li>32</li>
+                        <li>16</li>
+                    </ul>
+                </div>
+                
+            </div>
+
+        </div>
         <script src="script.js"></script>
     </body>
     

@@ -1,24 +1,24 @@
-//create function to create grid
-    //use 2 loops 
-        //one for creation of row
-        //add class to each row
-            //second for creation of blocks
-            //add class to each block
-            //append block to row
-        //append row to 
-        
-//create function that adds functionality to each block
-    //event listener => if clicked, change color
+
 
 let selectedColor= "black";
 let selectedOption= "brush";
+let isMouseDown = false;
+
 
 const clrPicker = document.getElementById("color-picker")
 const toolBtn = document.querySelectorAll("[data-tool")
 
 const sketchPad = document.getElementById("sketch-pad");
 
-const resolutiionPicker = document.getElementById("resolution-picker");
+const resolutionPicker = document.getElementById("resolution-picker");
+
+window.onmousedown = ()=>{
+    isMouseDown=true;
+}
+
+window.onmouseup = () => {
+    isMouseDown=false;
+};
 
 toolBtn.forEach( (button) => {
     button.addEventListener("click", changeToolSelection);
@@ -27,12 +27,12 @@ toolBtn.forEach( (button) => {
 
 clrPicker.addEventListener("change", changeColor);
 
-resolutiionPicker.addEventListener("change", createGrid);
+resolutionPicker.addEventListener("change", createGrid);
 
-function displaySelectedTool(selectedTool){
+function displaySelectedTool(){
     toolBtn.forEach( (button)=>{
         button.classList.remove("btn-selected");
-        if(selectedTool === button.getAttribute("data-tool")){
+        if(selectedOption === button.getAttribute("data-tool")){
             button.classList.add("btn-selected");
         }
     });
@@ -40,37 +40,15 @@ function displaySelectedTool(selectedTool){
 }
 
 function changeColor(){
-    if(toolBtn.item(0).getAttribute("class") ===  "btn-selected"){
-       
+    if(selectedOption == "brush"){
          selectedColor = clrPicker.value;
-        
-        
     }
 }
 
 function changeToolSelection(){
-    const selectedTool = (this.getAttribute("data-tool"));
+    selectedOption = (this.getAttribute("data-tool"));
 
-    displaySelectedTool(selectedTool);
-    console.log(selectedTool);
-    switch(selectedTool){
-        case "solid-color":
-            changeColor();
-            selectedOption = "brush"
-            break;
-
-        case "shadow":
-            selectedColor = "rgb(255,255,255)";
-            selectedOption = "shadow";
-            break;
-        case "rainbow":
-            selectedOption = "rainbow";
-            break;
-        case "erasor":
-            selectedOption = "erasor"
-            selectedColor = "white";
-            break;
-    }
+    displaySelectedTool();
 }
 
 
@@ -80,17 +58,18 @@ function createGrid(){
     while(sketchPad.firstChild){
         sketchPad.removeChild(sketchPad.firstChild);
     }
-    size = resolutiionPicker.value;
-    
+    size = resolutionPicker.value;
 
-    console.log("ello")
     for(let i = 0; i < size; i++){
         const sketchRow = document.createElement("div");
         sketchRow.classList.add("sketch-row");
         for(let j = 0; j < size; j++){
             const sketchBlock = document.createElement("div");
             sketchBlock.classList.add("sketch-block");
-            sketchBlock.addEventListener("mouseover", changeBgClr)
+            sketchBlock.addEventListener("mouseover", changeBgClr);
+            sketchBlock.addEventListener("mousedown", ()=> isMouseDown = true);
+            sketchBlock.addEventListener("mousedown", changeBgClr);
+            
 
             sketchRow.appendChild(sketchBlock);
         }
@@ -99,24 +78,28 @@ function createGrid(){
 }
 
 
-function generateRandNum(start, end){
-    
-    return Math.floor(Math.random()*(end-start+1)+start)
+function generateRandNum(min, max){
+    return Math.floor(Math.random()*(max-min+1)+min)
 }
 
 function getRainbowClr(){
-    const red= generateRandNum(0,255);
-    const green = generateRandNum(0,255);
-    const blue =  generateRandNum(0,255);
+    const min = 80;
+    const max = 255;
+    const red= generateRandNum(min,max);
+    const blue =  generateRandNum(min,max);
+    const green = generateRandNum(min,max);
     return `rgb(${red},${green},${blue})`;
 }
 
 function getShadowClr(){
     let shadowClr = (selectedColor.split(","))[1];
-    console.log(shadowClr);
+    if(!shadowClr){
+        shadowClr = 230;
+    }
+
     shadowClr -= Math.floor(255/10);
-    if(shadowClr < 0){
-        shadowClr = 255;
+    if(shadowClr < 10){
+        shadowClr = 230;
     }
     
     
@@ -124,18 +107,24 @@ function getShadowClr(){
 }
 
 function changeBgClr(){
+    console.log(isMouseDown)
+    if(!isMouseDown){
+        return;
+    } 
+
     switch(selectedOption){
         case "shadow":
             selectedColor = getShadowClr();
             break;  
         case "rainbow":
             selectedColor = getRainbowClr();
-            console.log(selectedColor);
             break;
         
         case "brush":
             changeColor();
-            
+            break;
+        case "erasor":
+            selectedColor = "white";
             break;
     }
     this.style.backgroundColor = selectedColor;

@@ -5,7 +5,7 @@
         <link rel="stylesheet" href="style.css">
         <meta charset="utf-8">
     </head>
-    <body>
+    <body ondragstart="return false;" ondrop="return false;">
             <h1 class="title">Etch a sketch</h1>
             <div class="sketch-ui-container">
                 <div class="sketch-ui">
@@ -16,7 +16,7 @@
                             <input type="color" id="color-picker" value="#000000" >
                         </div>
                         <ul class="tools">
-                            <li>Brush: <button data-tool="solid-color" class="btn-selected"></button></li>
+                            <li>Brush: <button data-tool="brush" class="btn-selected"></button></li>
                             <li>Shadow: <button data-tool="shadow" ></button></li>
                             <li>Rainbow: <button data-tool="rainbow" ></button></li>
                             <li>Erasor: <button data-tool="erasor" ></button></li>

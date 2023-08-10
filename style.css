@@ -10,11 +10,13 @@ html,body{
     height: 100%;
 }
 body{
-    
+    background-image: url("img/rainbow.jpg");
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-direction: column;    
+    flex-direction: column;   
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 .title{
     font-weight: bold;
@@ -24,6 +26,9 @@ body{
 .sketch-ui{
     display: flex;
     height: fit-content;
+    background-color: rgb(231, 231, 225);
+    box-shadow: 0 0 10px rgb(83, 83, 83);
+
 }
 
 .settings-container{
@@ -168,4 +173,5 @@ body{
 
 .credit{
     text-align: center;
+    color: white;
 }

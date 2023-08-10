@@ -23,18 +23,19 @@ body{
 
 .sketch-ui{
     display: flex;
-    flex: 0 1 800px;
     height: fit-content;
 }
 
 .settings-container{
     border: 10px solid gray;
-    flex: 1 0 100px;
+    flex: none;
+    /* width: 100px; */
     text-align: center;
     display: flex;
     flex-direction: column;
     align-items: center;
     height: 400px;
+    width: 100px;
 }
 
 .color-picker-container{
@@ -102,32 +103,69 @@ body{
     flex: 1;
 }
 
+.slider-container-outer{
+    margin-left: 283px;
+    margin-top: 165px
 
-.slider-container{
-    display: flex;
-    margin-top: 20px;
-    justify-content: center;
-    height: 300px;
 }
 
+.slider-container{
+    transform:rotate(-90deg);
+    justify-content: center;
+    height: 300px;
+    width: 20px;
+}
+
+
+
+
+.slider,
+.slider-ticks{
+    box-sizing: border-box;
+
+    padding: 0 20px;
+    width: 300px;
+
+}
 .slider{
-    width: 10px;
-    appearance: slider-vertical;
+    appearance: none;
     /* safari */
-    -webkit-appearance: slider-vertical;
-    height: 100%;
-    margin-left: 36px;
+    -webkit-appearance: none;
+    appearance: none;
+    height: 10px;
     
+    background-color: rgb(172, 172, 172);
+    
+}
+
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    cursor: pointer;
+    height: 15px;
+    width: 15px;
+    background-color: rgb(0, 0, 0);
+    transform:rotate(45deg) 
 }
 
 
 
 
 .slider-ticks{  
+    padding: 0 18px;
     z-index: 2;
-    list-style-type: "-  "; 
-    margin-left: 20px; 
+    list-style-type: none;
     display: flex;
-    flex-direction: column;
+    align-items: center;
     justify-content: space-between;
+}
+
+.slider-ticks li{
+    width: 20px;
+    text-align: center;
+    rotate: 90deg;
+}
+
+.credit{
+    text-align: center;
 }
